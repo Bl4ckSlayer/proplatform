@@ -54,7 +54,7 @@ const Home = (props: Props) => {
         <div className="hero-content text-center">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold">
-              Hello there, Welcome to{" "}
+              Hello, Welcome to{" "}
               <span className="text-primary">Course management App</span>
             </h1>
             <p className="py-6">
