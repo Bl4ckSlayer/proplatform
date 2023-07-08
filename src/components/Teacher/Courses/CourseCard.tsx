@@ -11,7 +11,7 @@ const CourseCard = ({ item }: Props) => {
   return (
     <div
       className=" bg-slate-50 cursor-pointer rounded border"
-      onClick={() => navigate(`${item?._id}`)}
+      onClick={() => navigate(`player/${item?._id}`)}
     >
       <div className=" p-2">
         <div className="flex items-center justify-between">
