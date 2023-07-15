@@ -256,6 +256,90 @@ const Register = (props: Props) => {
                   </span>
                 )}
               </div>
+              {/* codeforce */}
+              <div className="flex flex-col gap-2 mt-3">
+          <label htmlFor="codeForces">
+            CodeForce Id <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            {...register("codeForces", {
+              required: "codeForces is required",
+             
+            })}
+            id="codeForces"
+            placeholder="Enter your codeForces id"
+            className="input input-bordered w-full border-primary focus:border-primary"
+          />
+          {errors.codeForces && (
+            <span className="text-red-500 text-sm ">
+              {(errors as any).codeForces.message}
+            </span>
+          )}
+        </div>
+              {/* atCoder */}
+              <div className="flex flex-col gap-2 mt-3">
+          <label htmlFor="atCoder">
+          atCoder Id <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            {...register("atCoder", {
+              required: "atCoder is required",
+             
+            })}
+            id="atCoder"
+            placeholder="Enter your atCoder id"
+            className="input input-bordered w-full border-primary focus:border-primary"
+          />
+          {errors.atCoder && (
+            <span className="text-red-500 text-sm ">
+              {(errors as any).atCoder.message}
+            </span>
+          )}
+        </div>
+              {/* codeChef */}
+              <div className="flex flex-col gap-2 mt-3">
+          <label htmlFor="codeChef">
+          codeChef Id <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            {...register("codeChef", {
+              required: "codeChef is required",
+             
+            })}
+            id="codeChef"
+            placeholder="Enter your codeChef id"
+            className="input input-bordered w-full border-primary focus:border-primary"
+          />
+          {errors.codeChef && (
+            <span className="text-red-500 text-sm ">
+              {(errors as any).codeChef.message}
+            </span>
+          )}
+        </div>
+              {/* leetCode */}
+              <div className="flex flex-col gap-2 mt-3">
+          <label htmlFor="leetCode">
+          leetCode Id <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            {...register("leetCode", {
+              required: "leetCode is required",
+             
+            })}
+            id="leetCode"
+            placeholder="Enter your leetCode id"
+            className="input input-bordered w-full border-primary focus:border-primary"
+          />
+          {errors.leetCode && (
+            <span className="text-red-500 text-sm ">
+              {(errors as any).leetCode.message}
+            </span>
+          )}
+        </div>
             </>
           )}
         </div>

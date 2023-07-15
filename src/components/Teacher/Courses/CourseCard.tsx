@@ -2,16 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-  item: any;
+  item: any; 
+ 
 };
 
 const CourseCard = ({ item }: Props) => {
   // from react router dom
+
   const navigate = useNavigate();
   return (
     <div
       className=" bg-slate-50 cursor-pointer rounded border"
-      onClick={() => navigate(`player/${item?._id}`)}
+      onClick={() => navigate(`${item?._id}`)}
     >
       <div className=" p-2">
         <div className="flex items-center justify-between">
