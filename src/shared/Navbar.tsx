@@ -51,11 +51,7 @@ const Navbar = (props: Props) => {
       <li tabIndex={0}>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <a>
-          <span className="badge badge-primary">New</span>For Enterprise
-        </a>
-      </li>
+     
     </>
   );
   return (
