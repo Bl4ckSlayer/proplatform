@@ -29,11 +29,11 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "courses",
+    path: "course",
     element: <Courses />,
   },
   {
-    path: "course/player/:courseId",
+    path: "course/:courseId",
     element: <CoursePlayer />,
   },
   {

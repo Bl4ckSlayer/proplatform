@@ -8,6 +8,10 @@ import {
 } from "react-headless-accordion";
 import { BiChevronDown, BiCross, BiPlus, BiX } from "react-icons/bi";
 import { set, useForm } from "react-hook-form";
+import { useGetEnrolledCoursesForStudentQuery } from "../../features/coursesSlice/courseApi";
+import ComponentLoader from "../../components/ComponentLoader";
+import CourseCard from "../../components/Teacher/Courses/CourseCard";
+import NoDataFound from "../../components/ui/NoDataFound";
 
 const filtersData = [
   {
@@ -81,9 +85,41 @@ const Courses = (Props: any) => {
   const onSubmit = (data: any) => {
     console.log(data);
   };
-
+  const {
+    data: courses,
+    isLoading,
+    isError,
+    error,
+  } = useGetEnrolledCoursesForStudentQuery({});
+  console.log(courses);
   return (
     <>
+      <div>
+        <Navbar/>
+        <div className="title flex items-center justify-center py-1 my-1">
+          <h1>All Courses</h1>
+         
+        </div>
+        <div className="">
+          {isLoading ? (
+            <ComponentLoader />
+          ) : isError ? (
+            <div>Something went wrong Sir.</div>
+          ) : (
+            <>
+              {courses?.data?.length > 0 ? (
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-2  gap-3 ">
+                  {courses?.data?.map((item: any) => (
+                    <CourseCard key={item?._id} item={item} />
+                  ))}
+                </div>
+              ) : (
+                <NoDataFound title={"No Courses Found."} />
+              )}
+            </>
+          )}
+        </div>
+      </div>
       <div className="p-5 container mx-auto">
         <div className="flex items-center gap-2 justify-between">
           <h1 className="text-2xl font-bold">Filters</h1>

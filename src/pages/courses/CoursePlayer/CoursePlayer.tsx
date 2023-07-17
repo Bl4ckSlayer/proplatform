@@ -6,7 +6,10 @@ import {
   AccordionHeader,
   AccordionItem,
 } from "react-headless-accordion";
-import { useGetCourseByIdQuery } from "../../../features/coursesSlice/courseApi";
+import {
+  useGetCourseByIdQuery,
+  useGetMilestoneByCourseQuery,
+} from "../../../features/coursesSlice/courseApi";
 import { useParams } from "react-router-dom";
 import MilestoneItems from "./MilestoneItems";
 
@@ -15,77 +18,78 @@ type Props = {};
 const CoursePlayer = (props: Props) => {
   const { courseId } = useParams<{ courseId: string }>();
   const { data: course, error } = useGetCourseByIdQuery(courseId);
+  const { data: milestone } = useGetMilestoneByCourseQuery(courseId);
 
-  console.log(courseId, course, error);
+  console.log(courseId,milestone);
 
   const [openTab, setOpenTab] = useState(1);
   const [isActive, setIsActive] = useState(false);
 
-  const milestone = [
-    {
-      id: 10,
+  // const milestone = [
+  //   {
+  //     id: 10,
 
-      milestone: "milestone 1 ",
-      module: [
-        {
-          id: 1,
-          name: "module 1",
-          link: "https://www.youtube.com/embed/TBWX97e1E9g",
-        },
-        {
-          id: 2,
-          name: "module 2",
-          link: "https://www.youtube.com/embed/jYAlqWNuI4M",
-        },
-      ],
-    },
-    {
-      id: 20,
+  //     milestone: "milestone 1 ",
+  //     module: [
+  //       {
+  //         id: 1,
+  //         name: "module 1",
+  //         link: "https://www.youtube.com/embed/TBWX97e1E9g",
+  //       },
+  //       {
+  //         id: 2,
+  //         name: "module 2",
+  //         link: "https://www.youtube.com/embed/jYAlqWNuI4M",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: 20,
 
-      milestone: "milestone 2 ",
-      module: [
-        {
-          id: 12,
+  //     milestone: "milestone 2 ",
+  //     module: [
+  //       {
+  //         id: 12,
 
-          name: "module 1",
-          link: "https://www.youtube.com/embed/k9WqpQp8VSU",
-        },
-        {
-          id: 23,
-          name: "module 2",
-          link: "https://www.youtube.com/embed/qZ2pb6BljLk",
-        },
-        {
-          id: 24,
-          name: "module 3",
-          link: "https://www.youtube.com/embed/qZ2pb6BljLk",
-        },
-      ],
-    },
-    {
-      id: 21,
+  //         name: "module 1",
+  //         link: "https://www.youtube.com/embed/k9WqpQp8VSU",
+  //       },
+  //       {
+  //         id: 23,
+  //         name: "module 2",
+  //         link: "https://www.youtube.com/embed/qZ2pb6BljLk",
+  //       },
+  //       {
+  //         id: 24,
+  //         name: "module 3",
+  //         link: "https://www.youtube.com/embed/qZ2pb6BljLk",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: 21,
 
-      milestone: "milestone 3 ",
-      module: [
-        {
-          id: 123,
+  //     milestone: "milestone 3 ",
+  //     module: [
+  //       {
+  //         id: 123,
 
-          name: "module 1",
-          link: "https://www.youtube.com/embed/k9WqpQp8VSU",
-        },
-        {
-          id: 233,
-          name: "module 2",
-          link: "https://www.youtube.com/embed/qZ2pb6BljLk",
-        },
-        {
-          id: 243,
-          name: "module 3",
-          link: "https://www.youtube.com/embed/qZ2pb6BljLk",
-        },
-      ],
-    },
-  ];
+  //         name: "module 1",
+  //         link: "https://www.youtube.com/embed/k9WqpQp8VSU",
+  //       },
+  //       {
+  //         id: 233,
+  //         name: "module 2",
+  //         link: "https://www.youtube.com/embed/qZ2pb6BljLk",
+  //       },
+  //       {
+  //         id: 243,
+  //         name: "module 3",
+  //         link: "https://www.youtube.com/embed/qZ2pb6BljLk",
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <>
@@ -135,13 +139,13 @@ const CoursePlayer = (props: Props) => {
               </div>
             </div>
             <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50   border-slate-50/10 divide-y ">
-              {milestone.map((item) => (
+              {/* {milestone?.map((item: any) => (
                 <MilestoneItems
                   item={item}
                   key={item?.id}
                   setOpenTab={setOpenTab}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>

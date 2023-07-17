@@ -2,11 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-  item: any;
+  item: any; 
+ 
 };
 
 const CourseCard = ({ item }: Props) => {
   // from react router dom
+
   const navigate = useNavigate();
   return (
     <div

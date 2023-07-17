@@ -36,26 +36,22 @@ const Navbar = (props: Props) => {
   const Menus = (
     <>
       <li>
-        <Link to={"/courses"} className="btn btn-ghost">
+        <Link to={"/course"} className="btn btn-ghost">
           Courses
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link to={"/course/player/hey-nach-nah"} className="btn btn-ghost">
           Player
         </Link>
-      </li>
+      </li> */}
       <li tabIndex={0}>
         <a>Blogs</a>
       </li>
       <li tabIndex={0}>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <a>
-          <span className="badge badge-primary">New</span>For Enterprise
-        </a>
-      </li>
+     
     </>
   );
   return (
@@ -87,7 +83,7 @@ const Navbar = (props: Props) => {
                 {Menus}
               </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">Coursera</a>
+            <a className="btn btn-ghost normal-case text-xl">ProPlatform</a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{Menus}</ul>

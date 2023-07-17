@@ -109,7 +109,7 @@ const DashboardMenus = (props: Props) => {
       {/*  Sidebar content here  */}
       <li className="p-4 ">
         <Link className="text-4xl font-bold font-montserrat" to={"/"}>
-          Coursera
+          ProPlatform
         </Link>
       </li>
       {menus.map((item, index) => {

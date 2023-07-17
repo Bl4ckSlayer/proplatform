@@ -62,11 +62,11 @@ const DashboardLayout = (props: Props) => {
   return (
     <main>
       {/* dashboard menus */}
-      <div className="drawer drawer-mobile ">
+      <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content p-1">
           {/* page header */}
-          <div className="flex flex-row items-center justify-between bg-slate-100 px-6 p-2 rounded sticky top-1 z-30">
+          <div className="flex flex-row items-center justify-between bg-[#7594fc] px-6 p-2 rounded sticky top-1 z-30 text-white">
             <div>
               <label
                 htmlFor="my-drawer-2"
@@ -76,7 +76,7 @@ const DashboardLayout = (props: Props) => {
               </label>
               <span className="text-2xl">
                 <Link to="/" className="flex items-center gap-2">
-                  <span className="text-[#5375e2] capitalize font-bold flex items-center gap-1">
+                  <span className="capitalize font-bold flex items-center gap-1 text-white ">
                     {role === "student" ? <FaUserGraduate /> : <GiTeacher />}
                     {role}
                   </span>{" "}
