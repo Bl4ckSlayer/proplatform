@@ -95,11 +95,10 @@ const Courses = (Props: any) => {
   return (
     <>
       <div>
-        <div className="title flex items-center justify-between py-1 my-1">
+        <Navbar/>
+        <div className="title flex items-center justify-center py-1 my-1">
           <h1>All Courses</h1>
-          <label htmlFor="add-course-modal" className="btn btn-primary btn-sm">
-            Add New Course
-          </label>
+         
         </div>
         <div className="">
           {isLoading ? (

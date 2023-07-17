@@ -18,9 +18,9 @@ type Props = {};
 const CoursePlayer = (props: Props) => {
   const { courseId } = useParams<{ courseId: string }>();
   const { data: course, error } = useGetCourseByIdQuery(courseId);
-  // const { data: milestone } = useGetMilestoneByCourseQuery(courseId);
+  const { data: milestone } = useGetMilestoneByCourseQuery(courseId);
 
-  // console.log(courseId, course, course.data, error);
+  console.log(courseId,milestone);
 
   const [openTab, setOpenTab] = useState(1);
   const [isActive, setIsActive] = useState(false);
@@ -139,13 +139,13 @@ const CoursePlayer = (props: Props) => {
               </div>
             </div>
             <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50   border-slate-50/10 divide-y ">
-              {milestone?.map((item: any) => (
+              {/* {milestone?.map((item: any) => (
                 <MilestoneItems
                   item={item}
                   key={item?.id}
                   setOpenTab={setOpenTab}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
