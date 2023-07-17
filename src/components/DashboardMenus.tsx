@@ -20,28 +20,28 @@ const StudentDashboardMenu = [
     path: "/student/dashboard",
     icon: <AiFillDashboard />,
   },
-  {
-    title: "Enrolled Courses",
-    path: "enrolled-courses",
-    icon: <BiChalkboard />,
-  },
+  // {
+  //   title: "Enrolled Courses",
+  //   path: "enrolled-courses",
+  //   icon: <BiChalkboard />,
+  // },
 
-  {
-    title: "Notifications",
-    path: "notifications",
-    icon: <BsBell />,
-  },
+  // {
+  //   title: "Notifications",
+  //   path: "notifications",
+  //   icon: <BsBell />,
+  // },
   {
     title: "Profile",
     path: "profile",
 
     icon: <CgProfile />,
   },
-  {
-    title: "Settings",
-    path: "settings",
-    icon: <FaCogs />,
-  },
+  // {
+  //   title: "Settings",
+  //   path: "settings",
+  //   icon: <FaCogs />,
+  // },
 ];
 
 // teacher dashboard menu
@@ -61,22 +61,22 @@ const TeacherDashboardMenu = [
     path: "students",
     icon: <IoIosPeople />,
   },
-  {
-    title: "Assignments",
-    path: "assignments",
-    icon: <GiNewspaper />,
-  },
+  // {
+  //   title: "Assignments",
+  //   path: "assignments",
+  //   icon: <GiNewspaper />,
+  // },
   {
     title: "Quizzes",
     path: "quizzes",
     icon: <MdOutlineQuiz />,
   },
 
-  {
-    title: "Messages",
-    path: "messages",
-    icon: <BiMessageRoundedDots />,
-  },
+  // {
+  //   title: "Messages",
+  //   path: "messages",
+  //   icon: <BiMessageRoundedDots />,
+  // },
 
   {
     title: "Profile",
@@ -84,11 +84,11 @@ const TeacherDashboardMenu = [
 
     icon: <CgProfile />,
   },
-  {
-    title: "Settings",
-    path: "settings",
-    icon: <FaCogs />,
-  },
+  // {
+  //   title: "Settings",
+  //   path: "settings",
+  //   icon: <FaCogs />,
+  // },
 ];
 
 const DashboardMenus = (props: Props) => {

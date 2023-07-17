@@ -4,6 +4,7 @@ import { BiTrashAlt, BiVolumeMute } from "react-icons/bi";
 import { BsCreditCard, BsEye, BsSend } from "react-icons/bs";
 import { useRemoveStudentFromCourseMutation } from "../../../../../../features/coursesSlice/courseApi";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 type Props = {
   student: any;
   courseId: string | undefined;
@@ -66,30 +67,14 @@ const EnrolledStudentRow = ({ student, courseId }: Props) => {
 
       <td>
         <div className="flex items-center gap-1">
-          <button
+        <Link
+            to={`/teacher/dashboard/students/${student?._id}`}
             data-tip="View"
             className="btn btn-primary btn-outline btn-sm btn-circle tooltip grid place-items-center tooltip-primary"
           >
             <BsEye />
-          </button>
-          <button
-            data-tip="Send Message"
-            className="btn btn-info btn-sm btn-circle tooltip grid place-items-center tooltip-primary"
-          >
-            <BsSend />
-          </button>
-          <button
-            data-tip="Certificate"
-            className="btn btn-success btn-sm btn-circle tooltip grid place-items-center tooltip-primary"
-          >
-            <BsCreditCard />
-          </button>
-          <button
-            data-tip="Mute"
-            className="btn btn-warning  btn-sm btn-circle tooltip grid place-items-center tooltip-primary"
-          >
-            <BiVolumeMute />
-          </button>
+          </Link>
+          
           <button
             data-tip="Remove"
             onClick={handleRemoveStudent}

@@ -21,6 +21,9 @@ const CoursePlayer = (props: Props) => {
   const { data: milestone } = useGetMilestoneByCourseQuery(courseId);
 
   console.log(courseId,milestone);
+  // const mil={milestone?.milestones?.map((items: any) => (
+  //   return ModuleItems;
+  // ))}
 
   const [openTab, setOpenTab] = useState(1);
   const [isActive, setIsActive] = useState(false);
@@ -138,14 +141,15 @@ const CoursePlayer = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50   border-slate-50/10 divide-y ">
-              {/* {milestone?.map((item: any) => (
+            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50 text-black  border-slate-50/10 divide-y ">dfklgndkfgk
+              {milestone?.milestones?.map((item: any) => (
+                
                 <MilestoneItems
                   item={item}
-                  key={item?.id}
+                  key={item?._id}
                   setOpenTab={setOpenTab}
                 />
-              ))} */}
+              ))}
             </div>
           </div>
         </div>
