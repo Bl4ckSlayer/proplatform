@@ -4,6 +4,7 @@ import {
   AccordionHeader,
   AccordionItem,
 } from "react-headless-accordion";
+import { useGetModuleByMilestoneQuery } from "../../../features/coursesSlice/courseApi";
 
 type Props = {
   item: any;
@@ -11,10 +12,12 @@ type Props = {
 };
 
 const ModuleItems = ({ item, setOpenTab }: Props) => {
+  const { data: module } =useGetModuleByMilestoneQuery(item._id);  
+  console.log(module)
   return (
     <div className="accordion-body p-2  ">
       <ul role="tablist">
-        {item.module.map((i: any, index: number) => (
+        {item?.module?.map((i: any, index: number) => (
           <AccordionItem key={i.id}>
             {({ open }: any) => (
               <>
