@@ -36,7 +36,7 @@ const coursesApi = createApi({
     }),
     editCourse: builder.mutation({
       query: (body) => ({
-        url: `/${body.id}`,
+        url: `/module/update/${body.id}`,
         method: "PATCH",
 
         body,

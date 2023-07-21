@@ -17,7 +17,7 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
   const { data: module } =useGetModuleByMilestoneQuery(item._id);  
   console.log(module)
   return (
-    <><h1>this is mil</h1><Accordion
+    <Accordion
     transition={{
       duration: "300ms",
       timingFunction: "cubic-bezier(0, 0, 0.2, 1)",
@@ -48,7 +48,7 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
         </>
       )}
     </AccordionItem>
-  </Accordion></>
+  </Accordion>
   );
 };
 

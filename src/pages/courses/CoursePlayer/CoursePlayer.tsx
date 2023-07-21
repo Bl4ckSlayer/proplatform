@@ -141,7 +141,7 @@ const CoursePlayer = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50 text-black  border-slate-50/10 divide-y ">dfklgndkfgk
+            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50 text-black  border-slate-50/10 divide-y ">
               {milestone?.milestones?.map((item: any) => (
                 
                 <MilestoneItems
