@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionItem,
 } from "react-headless-accordion";
-import { useGetModuleByMilestoneQuery } from "../../../features/coursesSlice/courseApi";
+import { useGetModuleByMilestoneQuery, useGetModulesByCourseQuery } from "../../../features/coursesSlice/courseApi";
 
 type Props = {
   item: any;

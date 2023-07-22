@@ -114,6 +114,15 @@ const coursesApi = createApi({
       query: (id) => `/video/${id}`,
       providesTags: ["Course"],
     }),
+    updateVideosById: builder.query({
+      query: (body) => ({
+        url: `/video/update/${body._id}`,
+        method: "POST",
+        body: body,
+      }),
+      
+      providesTags: ["Course"],
+    }),
 
     // get all students who are not enrolled yet
     getNotEnrolledStudentsInCourse: builder.query({
@@ -178,6 +187,7 @@ export const {
   useAddVideoToModuleMutation,
   useAddAssignmentToModuleMutation,
   useGetVideosByModuleQuery,
+  useUpdateVideosByIdQuery,
   useGetNotEnrolledStudentsInCourseQuery,
   useGiveAccessToStudentMutation,
   useGetEnrolledStudentsInCourseQuery,

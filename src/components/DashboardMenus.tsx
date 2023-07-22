@@ -61,11 +61,11 @@ const TeacherDashboardMenu = [
     path: "students",
     icon: <IoIosPeople />,
   },
-  // {
-  //   title: "Assignments",
-  //   path: "assignments",
-  //   icon: <GiNewspaper />,
-  // },
+  {
+    title: "Notification",
+    path: "notification",
+    icon: <GiNewspaper />,
+  },
   {
     title: "Quizzes",
     path: "quizzes",
@@ -105,9 +105,9 @@ const DashboardMenus = (props: Props) => {
   const location = useLocation();
 
   return (
-    <ul className="menu p-4 w-72  text-base-200 bg-[#5375e2]">
+    <ul className="menu p-2 w-80  text-base-200 bg-[#5375e2]">
       {/*  Sidebar content here  */}
-      <li className="p-4 ">
+      <li className="p-2">
         <Link className="text-4xl font-bold font-montserrat" to={"/"}>
           ProPlatform
         </Link>

@@ -13,7 +13,7 @@ const Profile = (props: Props) => {
       {isLoading ? (
         <ComponentLoader />
       ) : (
-        <div className="p-7">
+        <div className="p-6">
           {/* profile image */}
           <div className="w-32 h-32 grid place-items-center border ml-auto bg-gray-50">
             <span className="text-5xl font-bold">
@@ -22,7 +22,7 @@ const Profile = (props: Props) => {
           </div>
 
           {/* other information */}
-          <div>
+          <div className=" overflow-x-auto overflow-y-auto ">
             <table className="table w-full table-zebra">
               <tbody>
                 <tr>

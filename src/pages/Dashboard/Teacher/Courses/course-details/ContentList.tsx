@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ModuleList from "./components/ModuleItem";
 import AddMilestoneModal from "./modals/AddMilestoneModal";
 import AddModuleModal from "./modals/AddModuleModal";
@@ -11,15 +11,18 @@ import MilestoneItem from "./components/MilestoneItem";
 type Props = {
   courseId: String | undefined;
   course: any;
+ 
 };
 
 const ContentList = ({ courseId, course }: Props) => {
+
   // get milestone by this course
   const {
     data: milestones,
     isLoading,
     isError,
   } = useGetMilestoneByCourseQuery(courseId);
+
 
   if (isLoading) return <ScreenLoader />;
   if (isError) {
@@ -35,11 +38,13 @@ const ContentList = ({ courseId, course }: Props) => {
           <span className="text-base">Course Content</span>
         </h3>
       </div>
-      <div className="mt-4 py-4 flex flex-col gap-1">
+      <div   className="mt-4 py-4 bg-base-300 p-4 rounded-xl flex flex-col gap-4">
         {milestones?.milestones?.length > 0 ? (
           <>
             {milestones?.milestones?.map((milestone: any, ind: number) => (
               <MilestoneItem
+             
+             
                 key={milestone?._id}
                 serial={ind}
                 milestone={milestone}

@@ -6,16 +6,15 @@ import {
   AccordionItem,
 } from "react-headless-accordion";
 import ModuleItems from "./ModuleItems";
-import { useGetModuleByMilestoneQuery } from "../../../features/coursesSlice/courseApi";
+import { useGetModuleByMilestoneQuery, useGetModulesByCourseQuery } from "../../../features/coursesSlice/courseApi";
 type Props = {
   item: any;
   setOpenTab: any;
 };
 
 const MilestoneItems = ({ item, setOpenTab }: Props) => {
-
-  const { data: module } =useGetModuleByMilestoneQuery(item._id);  
-  console.log(module)
+  // const { data: module } =useGetModulesByCourseQuery(item._id);  
+  console.log(item)
   return (
     <Accordion
     transition={{
