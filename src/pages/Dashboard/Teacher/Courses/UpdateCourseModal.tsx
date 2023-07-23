@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { useCreateCourseMutation, useEditCourseMutation } from "../../../../features/coursesSlice/courseApi";
+
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { useEditCourseMutation } from "../../../../features/coursesSlice/teacherApi";
 
 type Props = {  course: any;};
 
 const UpdateCourseModal = (   { course }: Props) => {  
-    console.log(course._id)
+    
     const [EditCourse,isSuccess] =
     useEditCourseMutation();
- console.log(EditCourse)
+
   // get hook form
   const {
     handleSubmit,
@@ -19,24 +20,14 @@ const UpdateCourseModal = (   { course }: Props) => {
   } = useForm();
   // handle submit form
   const handleAddCourse = handleSubmit(async (data: any) => {
-    const newData={...data,id: course._id}
+    const newData={...data,courseId: course._id}
     console.log(newData)
-    // console.log(data)
+   
     await EditCourse(newData);
-    // reset()
+    reset()
   });
 
-  // handle error and success
-//   useEffect(() => {
-//     if (isSuccess) {
-//       toast.success(`Hurray!! Brand new course created successfully done.`);
-//       reset();
-//     }
-//     // if (error) {
-//     //   toast.error(`something went wrong`);
-//     //   console.log(error);
-//     // }
-//   }, [isSuccess]);
+
   return (
     <form onSubmit={handleAddCourse}>
      

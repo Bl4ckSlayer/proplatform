@@ -6,8 +6,7 @@ import AddModuleModal from "./modals/AddModuleModal";
 import AddVideoModal from "./modals/AddVideoModal";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  useDeleteCourseMutation,
-  useEditCourseMutation,
+ 
   useGetCourseByTeacherQuery,
 } from "../../../../../features/coursesSlice/courseApi";
 import ScreenLoader from "../../../../../components/ScreenLoader";
@@ -16,6 +15,7 @@ import EnrolledStudents from "./EnrolledStudents/EnrolledStudents";
 import AddAssignmentModal from "./modals/AddAssignmentModal";
 import AddCourseModal from "../AddCourseModal";
 import UpdateCourseModal from "../UpdateCourseModal";
+import { useDeleteCourseMutation } from "../../../../../features/coursesSlice/teacherApi";
 
 const CourseDetails = () => {
   const navigate = useNavigate();
@@ -112,11 +112,7 @@ console.log(course)
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <a href="" className="p-1 px-3">
-                    Muted
-                  </a>
-                </li>
+                
                 <li>
                 <label htmlFor="add-course-modal" className="p-1 px-3">
            Edit

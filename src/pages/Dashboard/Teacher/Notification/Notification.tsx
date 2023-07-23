@@ -1,53 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NotificationModal from "./NotificationModal";
+import { SERVER_URL } from "../../../../config/config";
+import Cookies from "universal-cookie";
+const cookie = new Cookies();
 
 type Props = {};
 
 const Notification = (props: Props) => {
-    const datas=[
-        {batch
-        : 
-        "",
-        nDescription
-        : 
-        "",
-        nLink
-        : 
-        "",
-        nTitle
-        : 
-        "12",
-        nType
-        : 
-        "Announcement",
-        section
-        : 
-        "",
-        student
-        : 
-        ""},
-        {batch
-        : 
-        "",
-        nDescription
-        : 
-        "",
-        nLink
-        : 
-        "",
-        nTitle
-        : 
-        "12",
-        nType
-        : 
-        "Announcement",
-        section
-        : 
-        "",
-        student
-        : 
-        ""}
-    ]
+  const token = cookie.get("token") as string | undefined;
+    const [datas,setDatas]=useState([])
+    const getNotification =  () => {
+    
+      const headers = {
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${token}`
+       
+      };
+      // await createCourse(data);
+      fetch(`${SERVER_URL}/teacher/notification`, {
+        method : 'GET',
+        headers : headers
+      }).then(response => {
+        
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(data => {
+        
+        setDatas(data.notification)
+        console.log("Response Data get:", data.notification);
+       
+      })
+      .catch(error => {
+       
+        console.error("Error:", error);
+      });
+    };
+
+    useEffect(() => {
+      
+      getNotification()
+    }, []);
   return <div>
     <NotificationModal></NotificationModal>
     <div className="title flex items-center justify-between py-1 my-1">
@@ -59,14 +54,15 @@ const Notification = (props: Props) => {
 <div
 className="grid grid-cols-1 lg:grid-cols-4 mx-auto justify-center items-center gap-6 "
 >{datas?.map((data: any) => (
-                <div className="card w-96  bg-gray-300">
-                <div className="card-body items-center text-center">
-                  <h2 className="card-title">{data?.nType}</h2>
-                  <h2 className="card-title">{data?.nTitle}</h2>
-                  <p>{data?.nDescription}tgsthsht</p>
+                <div className="card w-96  h-56 bg-gray-300">
+                <div className="card-body items-center text-center">   
+                 <h2 className="card-title">{data?.title}</h2>
+                  <h2 className="card-title">{data?.notification_type}</h2>
+              
+                  <p>{data?.Description}</p>
                   <div className="card-actions justify-end">
-                  <h2 className="btn">{data?.batch}asd</h2> <h2 className="btn">{data?.section}asd</h2>
-                    <a href={data?.nLink} className="btn btn-primary">Link</a>
+                  <h2 className="btn">{data?.batch}</h2> <h2 className="btn">{data?.section}</h2>
+                    <a href={data?.link} className="btn btn-primary">Link</a>
                     
                   </div>
                 </div>

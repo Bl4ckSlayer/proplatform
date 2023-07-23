@@ -13,18 +13,18 @@ const prepareHeaders = (headers: any) => {
 const coursesApi = createApi({
   reducerPath: "coursesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${SERVER_URL}/courses`,
+    baseUrl: `${SERVER_URL}/teacher`,
     prepareHeaders,
   }),
-  tagTypes: ["Course"],
+  tagTypes: ["Teacher"],
   endpoints: (builder) => ({
     getCoursesForTeacher: builder.query({
       query: (id) => `/teacher/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
     getCourseByTeacher: builder.query({
       query: (id) => `/teacher/course/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
     createCourse: builder.mutation({
       query: (body) => ({
@@ -32,27 +32,27 @@ const coursesApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
     editCourse: builder.mutation({
       query: (body) => ({        
-        url: `/edit/${body.courseId}`,
+        url: `/course/edit/${body.courseId}`,
         method: "PATCH",
         body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
     deleteCourse: builder.mutation({
       query: (id) => ({
-        url: `/delete/${id}`,
+        url: `/course/delete/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
 
     getCourseById: builder.query({
       query: (id) => `/course/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // add milestone
@@ -62,12 +62,12 @@ const coursesApi = createApi({
         method: "POST",
         body: data.body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
     // get milestones by course id
     getMilestoneByCourse: builder.query({
       query: (id) => `/milestone/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // add module to milestone
@@ -77,17 +77,17 @@ const coursesApi = createApi({
         method: "POST",
         body: data.body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
     // get module by milestone
     getModuleByMilestone: builder.query({
       query: (id) => `/module/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
     // get modules by course id
     getModulesByCourse: builder.query({
       query: (id) => `/module/course/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // add videos to the modules
@@ -97,7 +97,7 @@ const coursesApi = createApi({
         method: "POST",
         body: data.body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
     // addAssignmentToModule to the modules
     addAssignmentToModule: builder.mutation({
@@ -106,12 +106,12 @@ const coursesApi = createApi({
         method: "POST",
         body: data.body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
     // get videos by module id
     getVideosByModule: builder.query({
       query: (id) => `/video/${id}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
     updateVideosById: builder.query({
       query: (body) => ({
@@ -120,14 +120,14 @@ const coursesApi = createApi({
         body: body,
       }),
       
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // get all students who are not enrolled yet
     getNotEnrolledStudentsInCourse: builder.query({
       query: (data: any) =>
         `/courses/not-enrolled-student/${data?.id}?q=${data?.keyword}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // give access to the student
@@ -137,13 +137,13 @@ const coursesApi = createApi({
         method: "POST",
         body: data.body,
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
 
     // get all the enrolled students for particular course
     getEnrolledStudentsInCourse: builder.query({
       query: (data: any) => `/enrolled-students/${data?.id}?q=${data?.keyword}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // remove student from course
@@ -152,7 +152,7 @@ const coursesApi = createApi({
         url: `/remove-student-from-course/${data?.courseId}/${data?.studentId}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Course"],
+      invalidatesTags: ["Teacher"],
     }),
 
     // for student
@@ -160,14 +160,14 @@ const coursesApi = createApi({
     // get all courses for student
     getEnrolledCoursesForStudent: builder.query({
       query: (id?: any) => `/enrolled-courses/student`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
 
     // for teacher
     getAllEnrolledStudents: builder.query({
       query: (data?: any) =>
         `/all-enrolled-students?q=${data?.keyword}&courseId=${data?.courseId}&batchName=${data?.batchName}&sectionName=${data?.sectionName}`,
-      providesTags: ["Course"],
+      providesTags: ["Teacher"],
     }),
     
     

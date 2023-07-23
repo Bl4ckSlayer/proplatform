@@ -3,6 +3,10 @@ import { useCreateCourseMutation, useGetAllEnrolledStudentsQuery } from "../../.
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { GiCoinsPile } from "react-icons/gi";
+import { SERVER_URL } from "../../../../config/config";
+import Cookies from "universal-cookie";
+import { useAppContext } from "../../../../context/AppContext";
+const cookie = new Cookies();
 
 type Props = {};
 
@@ -19,6 +23,9 @@ const NotificationModal = (props: Props) => {
   // get api for add course
   const [createCourse, { isLoading, data, error, isSuccess }] =
     useCreateCourseMutation();
+    const { currentUser } = useAppContext();
+    console.log(currentUser);
+    const token = cookie.get("token") as string | undefined;
     const {
         data: students,
        
@@ -38,9 +45,35 @@ const NotificationModal = (props: Props) => {
   } = useForm();
   // handle submit form
   const handleAddNotification = handleSubmit(async (data: any) => {
-    console.log(data)
+    console.log({...data,user:currentUser?._id})
+    const headers = {
+      "Content-Type": "application/json",
+      "authorization": `Bearer ${token}`
+     
+    };
     // await createCourse(data);
+    fetch(`${SERVER_URL}/teacher/notification`, {
+      body : JSON.stringify(data),
+      method : 'POST',
+      headers : headers
+    }).then(response => {
+      
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then(data => {
+      
+      console.log("Response Data:", data);
+     
+    })
+    .catch(error => {
+     
+      console.error("Error:", error);
+    });
   });
+
 
   // handle error and success
   useEffect(() => {
@@ -52,6 +85,7 @@ const NotificationModal = (props: Props) => {
       toast.error(`something went wrong`);
       console.log(error);
     }
+   
   }, [isSuccess, error, data]);
   return (
     <form onSubmit={handleAddNotification}>
@@ -73,13 +107,13 @@ const NotificationModal = (props: Props) => {
               </label>
               <select
                 className="select select-bordered w-full "
-                {...register("nType", { required: true })}
+                {...register("notification_type", { required: true })}
               >
                 <option>Announcement</option>
                 <option>Assignment</option>
                
               </select>
-              {errors.nType && (
+              {errors.notification_type && (
                   <span className="text-red-500 text-sm ">
                     Notification type is required
                   </span>
@@ -94,11 +128,11 @@ const NotificationModal = (props: Props) => {
               <input
                 type="text"
                 className="input input-bordered"
-                {...register("nTitle", {
+                {...register("title", {
                   required: true,
                 })}
               />
-              {errors.nTitle && (
+              {errors.title && (
                   <span className="text-red-500 text-sm ">
                     Notification Title is required
                   </span>
@@ -110,7 +144,7 @@ const NotificationModal = (props: Props) => {
               </label>
               <textarea
                 className="textarea h-24 textarea-bordered"
-                {...register("nDescription")}
+                {...register("description")}
               ></textarea>
             </div>
             
@@ -120,7 +154,7 @@ const NotificationModal = (props: Props) => {
               </label>
               <input
                 type="url"
-                {...register("nLink")}
+                {...register("link")}
                 className="input input-bordered"
               />
             </div>
@@ -135,7 +169,8 @@ const NotificationModal = (props: Props) => {
               {...register("batch")}
               onChange={(e) => setBatch(e.target.value)}
             >
-              <option value="">Select Batch</option>
+              <option value="">All Batch</option>
+             
               
               {students?.filterData?.batches?.map((batch: any) => (
                 <option key={batch} value={batch}>
@@ -159,7 +194,8 @@ const NotificationModal = (props: Props) => {
                   value={section}
               onChange={(e) => setSection(e.target.value)}
                 >
-                  <option value="">Select Section</option>
+                  <option value="">All Section</option>
+                  
               
                   {students?.filterData?.sections?.map((section: any) => (
                 <option key={section} value={section}>
@@ -184,8 +220,8 @@ const NotificationModal = (props: Props) => {
                   value={student}
               onChange={(e) => setStudent(e.target.value)}
                 >
-                  <option value="">Select Student </option>
-                  <option value="All">All </option>
+                  <option value="">All Student </option>
+                  
                 
                   {students?.data?.map((student: any) => (
                 <option key={student?._id} value={student?._id}>

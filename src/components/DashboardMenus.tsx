@@ -26,11 +26,11 @@ const StudentDashboardMenu = [
   //   icon: <BiChalkboard />,
   // },
 
-  // {
-  //   title: "Notifications",
-  //   path: "notifications",
-  //   icon: <BsBell />,
-  // },
+  {
+    title: "Notifications",
+    path: "notifications",
+    icon: <BsBell />,
+  },
   {
     title: "Profile",
     path: "profile",
