@@ -107,7 +107,7 @@ const Navbar = (props: Props) => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 text-black rounded-box w-52"
                 >
                   <li>
                     <Link to={profileLink} className="justify-between">

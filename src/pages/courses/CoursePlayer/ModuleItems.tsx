@@ -21,7 +21,7 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
   console.log(data);
   const [active, inActive] = useState(false);
   return (
-    <Accordion className="accordion-body border-2 m-4 rounded-2xl  border-white ">
+    <Accordion className="accordion-body border-2 m-4 rounded-2xl   ">
       <ul role="tablist">
         <AccordionItem key={item._id}>
           {({ open }: any) => (
@@ -56,9 +56,10 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                     }}
                     data-toggle="tab"
                     role="tablist"
+                    className="bg-white rounded-2xl border-b-2"
                   >
                     <div
-                      className={`w-full flex flex-row gap-2 cursor-pointer  p-2 `}
+                      className={`w-full flex flex-row gap-2 cursor-pointer   p-2 `}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

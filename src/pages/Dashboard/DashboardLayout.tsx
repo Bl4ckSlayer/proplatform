@@ -64,7 +64,7 @@ const DashboardLayout = (props: Props) => {
       {/* dashboard menus */}
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content p-1">
+        <div className="drawer-content p-1 bg-slate-200">
           {/* page header */}
           <div className="flex flex-row items-center justify-between bg-[#7594fc] px-6 p-2 rounded sticky top-1 z-30 text-white">
             <div>

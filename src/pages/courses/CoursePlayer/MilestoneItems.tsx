@@ -29,7 +29,7 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
       <AccordionItem key={item._id}>
         {({ open }: any) => (
           <>
-            <AccordionHeader className="w-full flex justify-between items-center   p-4">
+            <AccordionHeader className="w-full flex justify-between items-center border-b-2   p-4">
               <span>{item.name}</span>
               <svg
                 className={`w-6 h-6 ${!open ? "" : "rotate-90"}`}

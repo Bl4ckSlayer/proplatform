@@ -32,7 +32,9 @@ const CoursePlayer = (props: Props) => {
 
   return (
     <>
-      <Navbar></Navbar>
+      <div className="bg-[#7594fc]">
+        <Navbar></Navbar>
+      </div>
       <section className="py-6  pb-36">
         <div className="mx-auto max-w-7xl px-5 lg:px-0">
           <div className="grid grid-cols-3 gap-2 lg:gap-8">
@@ -80,7 +82,7 @@ const CoursePlayer = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-300 text-black  border-slate-50/10 divide-y ">
+            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-6 mb-4 rounded-md bg-[#7692ee] text-black  border-slate-50/10 divide-y ">
               {milestone?.milestones?.map((item: any) => (
                 <MilestoneItems
                   item={item}
