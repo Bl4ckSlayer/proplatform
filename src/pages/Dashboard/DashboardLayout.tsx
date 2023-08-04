@@ -104,7 +104,7 @@ const DashboardLayout = (props: Props) => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-black"
                 >
                   <li>
                     <Link to={profileLink} className="justify-between">
@@ -119,7 +119,7 @@ const DashboardLayout = (props: Props) => {
             </div>
           </div>
           {/* Page content here  */}
-          <div className="main-content p-4">
+          <div className="main-content p-4 bg-slate-200">
             <Outlet />
           </div>
         </div>

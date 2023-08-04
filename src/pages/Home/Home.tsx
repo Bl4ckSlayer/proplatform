@@ -49,7 +49,9 @@ const Home = (props: Props) => {
     <div>
       {isShow && <AuthDecision setIsShow={setIsShow} />}
 
-      <Navbar />
+      <div className="bg-[#7594fc]">
+        <Navbar></Navbar>
+      </div>
       <div className="hero min-h-[93vh] bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-3xl">

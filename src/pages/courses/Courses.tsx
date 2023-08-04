@@ -95,7 +95,11 @@ const Courses = (Props: any) => {
   return (
     <>
       <div>
-        <Navbar />
+        <div className=" bg-[#7594fc] ">
+          {" "}
+          <Navbar />
+        </div>
+
         <div className="title flex items-center justify-center py-1 my-1">
           <h1>All Courses</h1>
         </div>
