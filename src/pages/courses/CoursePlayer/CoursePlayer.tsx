@@ -20,13 +20,15 @@ const CoursePlayer = (props: Props) => {
   const { data: milestone } = useGetMilestoneByCourseQuery(courseId);
 
   // console.log(courseId,milestone);
-  
 
-  const [openTab, setOpenTab] = useState({});
-  console.log(openTab)
+  const [openTab, setOpenTab] = useState({
+    url: "",
+    name: "",
+    description: "",
+    updatedAt: "",
+  });
+  console.log(openTab);
   const [isActive, setIsActive] = useState(false);
-
-  
 
   return (
     <>
@@ -36,8 +38,13 @@ const CoursePlayer = (props: Props) => {
           <div className="grid grid-cols-3 gap-2 lg:gap-8">
             <div className="col-span-full w-full space-y-8 lg:col-span-2">
               <div>
-               
-                <iframe width="100%" src={openTab.url} title="YouTube video player" className="aspect-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe
+                  width="100%"
+                  src={openTab?.url}
+                  title="YouTube video player"
+                  className="aspect-video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
 
                 <div>
                   <h1 className="text-lg font-semibold tracking-tight text-black">
@@ -48,7 +55,6 @@ const CoursePlayer = (props: Props) => {
                   </h1>
                   <h2 className=" pb-4 text-sm leading-[1.7142857] text-slate-400">
                     Uploaded on {openTab?.updatedAt}
-
                   </h2>
 
                   <div className="flex gap-4">
@@ -74,9 +80,8 @@ const CoursePlayer = (props: Props) => {
                 </div>
               </div>
             </div>
-            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-50 text-black  border-slate-50/10 divide-y ">
+            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto  p-4 rounded-md bg-gray-300 text-black  border-slate-50/10 divide-y ">
               {milestone?.milestones?.map((item: any) => (
-                
                 <MilestoneItems
                   item={item}
                   key={item?._id}

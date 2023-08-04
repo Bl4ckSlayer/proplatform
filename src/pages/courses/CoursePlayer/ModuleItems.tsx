@@ -5,7 +5,10 @@ import {
   AccordionHeader,
   AccordionItem,
 } from "react-headless-accordion";
-import { useGetModuleByMilestoneQuery, useGetModulesByCourseQuery } from "../../../features/coursesSlice/courseApi";
+import {
+  useGetModuleByMilestoneQuery,
+  useGetModulesByCourseQuery,
+} from "../../../features/coursesSlice/courseApi";
 import { useGetVideosByModuleQuery } from "../../../features/coursesSlice/studentApi";
 
 type Props = {
@@ -14,46 +17,49 @@ type Props = {
 };
 
 const ModuleItems = ({ item, setOpenTab }: Props) => {
-  const { data } =useGetVideosByModuleQuery(item._id);  
-  console.log(data)
-  const[active,inActive]=useState(false)
+  const { data } = useGetVideosByModuleQuery(item._id);
+  console.log(data);
+  const [active, inActive] = useState(false);
   return (
-    <Accordion className="accordion-body p-4  ">
+    <Accordion className="accordion-body border-2 m-4 rounded-2xl  border-white ">
       <ul role="tablist">
-        
-          <AccordionItem key={item._id}>
-            {({ open }: any) => (
-              <>
-                <AccordionHeader className={`w-full flex justify-between items-center  border-b p-4 ${!open ? "bg-grey" : "bg-blue-500"}`}>
-                  <span>{item.name}</span>
-                  <svg
-                    className={`w-6 h-6 ${!open ? "" : "rotate-90"}`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </AccordionHeader>
+        <AccordionItem key={item._id}>
+          {({ open }: any) => (
+            <>
+              <AccordionHeader
+                className={`w-full flex justify-between items-center  border-b p-4 ${
+                  !open ? "bg-grey" : "bg-gray-800 text-white rounded-2xl"
+                }`}
+              >
+                <span>{item.name}</span>
+                <svg
+                  className={`w-6 h-6 ${!open ? "" : "rotate-90"}`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </AccordionHeader>
 
-                <AccordionBody>
+              <AccordionBody>
                 {data?.data?.map((i: any, index: number) => (
-                  
-                  <div key={i._id}
+                  <div
+                    key={i._id}
                     onClick={(e) => {
                       e.preventDefault();
                       setOpenTab(i);
-                      
                     }}
-                    
                     data-toggle="tab"
                     role="tablist"
                   >
-                    <div  className={`w-full flex flex-row gap-2 cursor-pointer  p-2 `}>
+                    <div
+                      className={`w-full flex flex-row gap-2 cursor-pointer  p-2 `}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -74,28 +80,26 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                         />
                       </svg>
 
-                      <div  onClick={(e) => {
-                      e.preventDefault();
-                     
-                      
-                    }} className="flex flex-col w-full">
+                      <div
+                        onClick={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="flex flex-col w-full"
+                      >
                         <a href="#">
                           <p className="text-black text-sm font-medium">
-                           {i.name}
+                            {i.name}
                           </p>
                         </a>
-                        <div>
-                          
-                        </div>
+                        <div></div>
                       </div>
                     </div>
-                  </div> ))}
-                </AccordionBody>
-                
-              </>
-            )}
-          </AccordionItem>
-       
+                  </div>
+                ))}
+              </AccordionBody>
+            </>
+          )}
+        </AccordionItem>
       </ul>
     </Accordion>
   );

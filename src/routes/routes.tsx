@@ -31,11 +31,19 @@ const router = createBrowserRouter([
   },
   {
     path: "course",
-    element:  <AuthGuard><Courses /></AuthGuard>,
+    element: (
+      <AuthGuard>
+        <Courses />
+      </AuthGuard>
+    ),
   },
   {
     path: "course/:courseId",
-    element: <AuthGuard><CoursePlayer /></AuthGuard>,
+    element: (
+      <AuthGuard>
+        <CoursePlayer />
+      </AuthGuard>
+    ),
   },
   {
     path: "login",

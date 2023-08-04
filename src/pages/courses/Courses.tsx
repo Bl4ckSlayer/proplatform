@@ -95,10 +95,9 @@ const Courses = (Props: any) => {
   return (
     <>
       <div>
-        <Navbar/>
+        <Navbar />
         <div className="title flex items-center justify-center py-1 my-1">
           <h1>All Courses</h1>
-         
         </div>
         <div className="">
           {isLoading ? (
@@ -120,7 +119,7 @@ const Courses = (Props: any) => {
           )}
         </div>
       </div>
-      <div className="p-5 container mx-auto">
+      {/* <div className="p-5 container mx-auto">
         <div className="flex items-center gap-2 justify-between">
           <h1 className="text-2xl font-bold">Filters</h1>
           <div className="dropdown dropdown-end">
@@ -140,7 +139,7 @@ const Courses = (Props: any) => {
           </div>
         </div>
         {/* show the filters area */}
-        <div className="flex items-center justify-between my-3">
+      {/* <div className="flex items-center justify-between my-3">
           <div className="flex items-center gap-3">
             <ul className="flex gap-1 items-center flex-wrap">
               {filters.map((item) => (
@@ -250,7 +249,7 @@ const Courses = (Props: any) => {
             </li>
           )}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
