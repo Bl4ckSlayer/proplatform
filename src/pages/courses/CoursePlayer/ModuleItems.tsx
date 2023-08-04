@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  Accordion,
   AccordionBody,
   AccordionHeader,
   AccordionItem,
 } from "react-headless-accordion";
 import { useGetModuleByMilestoneQuery, useGetModulesByCourseQuery } from "../../../features/coursesSlice/courseApi";
+import { useGetVideosByModuleQuery } from "../../../features/coursesSlice/studentApi";
 
 type Props = {
   item: any;
@@ -12,17 +14,18 @@ type Props = {
 };
 
 const ModuleItems = ({ item, setOpenTab }: Props) => {
-  const { data: module } =useGetModuleByMilestoneQuery(item._id);  
-  console.log(module)
+  const { data } =useGetVideosByModuleQuery(item._id);  
+  console.log(data)
+  const[active,inActive]=useState(false)
   return (
-    <div className="accordion-body p-2  ">
+    <Accordion className="accordion-body p-4  ">
       <ul role="tablist">
-        {item?.module?.map((i: any, index: number) => (
-          <AccordionItem key={i.id}>
+        
+          <AccordionItem key={item._id}>
             {({ open }: any) => (
               <>
-                <AccordionHeader className="w-full flex justify-between items-center  border-b p-4">
-                  <span>{i.name}</span>
+                <AccordionHeader className={`w-full flex justify-between items-center  border-b p-4 ${!open ? "bg-grey" : "bg-blue-500"}`}>
+                  <span>{item.name}</span>
                   <svg
                     className={`w-6 h-6 ${!open ? "" : "rotate-90"}`}
                     fill="currentColor"
@@ -38,22 +41,26 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                 </AccordionHeader>
 
                 <AccordionBody>
-                  <div
+                {data?.data?.map((i: any, index: number) => (
+                  
+                  <div key={i._id}
                     onClick={(e) => {
                       e.preventDefault();
-                      setOpenTab(i.id);
+                      setOpenTab(i);
+                      
                     }}
+                    
                     data-toggle="tab"
                     role="tablist"
                   >
-                    <div className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-800 p-2">
+                    <div  className={`w-full flex flex-row gap-2 cursor-pointer  p-2 `}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="w-6 h-6 text-white"
+                        className="w-6 h-6 text-black"
                       >
                         <path
                           strokeLinecap="round"
@@ -67,27 +74,30 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                         />
                       </svg>
 
-                      <div className="flex flex-col w-full">
+                      <div  onClick={(e) => {
+                      e.preventDefault();
+                     
+                      
+                    }} className="flex flex-col w-full">
                         <a href="#">
-                          <p className="text-slate-50 text-sm font-medium">
-                            Introduction to Couse
+                          <p className="text-black text-sm font-medium">
+                           {i.name}
                           </p>
                         </a>
                         <div>
-                          <span className="text-gray-400 text-xs mt-1">
-                            34.5 Mins
-                          </span>
+                          
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> ))}
                 </AccordionBody>
+                
               </>
             )}
           </AccordionItem>
-        ))}
+       
       </ul>
-    </div>
+    </Accordion>
   );
 };
 

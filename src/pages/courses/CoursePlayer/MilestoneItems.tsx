@@ -6,15 +6,18 @@ import {
   AccordionItem,
 } from "react-headless-accordion";
 import ModuleItems from "./ModuleItems";
-import { useGetModuleByMilestoneQuery, useGetModulesByCourseQuery } from "../../../features/coursesSlice/courseApi";
+import { useGetModuleByMilestoneQuery,  } from"../../../features/coursesSlice/studentApi";
+
 type Props = {
   item: any;
   setOpenTab: any;
 };
 
 const MilestoneItems = ({ item, setOpenTab }: Props) => {
-  // const { data: module } =useGetModulesByCourseQuery(item._id);  
-  console.log(item)
+  const { data: module } =useGetModuleByMilestoneQuery(item._id)
+    console.log(module)
+    
+  // console.log(item)
   return (
     <Accordion
     transition={{
@@ -22,7 +25,7 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
       timingFunction: "cubic-bezier(0, 0, 0.2, 1)",
     }}
   >
-    <AccordionItem>
+    <AccordionItem key={item._id}>
       {({ open }: any) => (
         <>
           <AccordionHeader className="w-full flex justify-between items-center   p-4">
@@ -42,7 +45,12 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
           </AccordionHeader>
 
           <AccordionBody>
-            <ModuleItems item={item} setOpenTab={setOpenTab} />
+          {     module?.data?.map((ite: any) => (
+                
+                <ModuleItems item={ite} key={ite._id} setOpenTab={setOpenTab} />
+              ))}
+       
+           
           </AccordionBody>
         </>
       )}

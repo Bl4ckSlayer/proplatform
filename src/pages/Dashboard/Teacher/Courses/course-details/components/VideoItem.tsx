@@ -1,25 +1,32 @@
 import React, { useState } from "react";
 import { BiEditAlt, BiTrash, BiVideo } from "react-icons/bi";
-import { useUpdateVideosByIdQuery } from "../../../../../../features/coursesSlice/courseApi";
+
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useUpdateVideosByIdQuery } from "../../../../../../features/coursesSlice/teacherApi";
+
+
 
 type Props = {
   item: any;
+   mutate:any;
 };
 
 const VideoItem = ({ item }: Props) => {
   const { handleSubmit, register, reset, watch } = useForm();
+console.log(item)
 
- 
+  // const [updateVideo, { isLoading, error, data }] = useUpdateVideosByIdQuery();
 
 
   const handleAddVideo = handleSubmit(async (data) => {
     console.log(data);
-   
+    // const newData={...data,courseId: course._id}
+    // console.log(newData)
+    // await data(data);    
+    reset()
     setOpenEdit(false)
-
   });
   console.log(item)
   const [open ,setOpen]=useState(false)

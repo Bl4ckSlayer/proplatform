@@ -10,8 +10,8 @@ const prepareHeaders = (headers: any) => {
   return headers;
 };
 
-const coursesApi = createApi({
-  reducerPath: "coursesApi",
+const teacherApi = createApi({
+  reducerPath: "teacherApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${SERVER_URL}/teacher`,
     prepareHeaders,
@@ -92,13 +92,22 @@ const coursesApi = createApi({
 
     // add videos to the modules
     addVideoToModule: builder.mutation({
-      query: (data) => ({
-        url: `/add-video/${data?.id}`,
+      query: (body) => ({
+        url: `/add-video/${body?.id}`,
         method: "POST",
-        body: data.body,
+        body: body,
       }),
       invalidatesTags: ["Teacher"],
     }),
+    // update videos to the modules
+    // updateVideoToModule: builder.mutation({
+    //   query: (body) => ({
+    //     url: `/course/video/update/${body.id}`,
+    //     method: "PATCH",
+    //     body: body,
+    //   }),
+    //   invalidatesTags: ["Teacher"],
+    // }),
     // addAssignmentToModule to the modules
     addAssignmentToModule: builder.mutation({
       query: (data) => ({
@@ -115,11 +124,10 @@ const coursesApi = createApi({
     }),
     updateVideosById: builder.query({
       query: (body) => ({
-        url: `/video/update/${body._id}`,
-        method: "POST",
+        url: `/course/video/update/${body._id}`,
+        method: "PATCH",
         body: body,
-      }),
-      
+      }),      
       providesTags: ["Teacher"],
     }),
 
@@ -185,7 +193,7 @@ export const {
   useAddModuleToMilestoneMutation,
   useGetModuleByMilestoneQuery,
   useGetModulesByCourseQuery,
-  useAddVideoToModuleMutation,
+  useAddVideoToModuleMutation,  
   useAddAssignmentToModuleMutation,
   useGetVideosByModuleQuery,
   useUpdateVideosByIdQuery,
@@ -196,5 +204,5 @@ export const {
   useGetEnrolledCoursesForStudentQuery,
   useGetCourseByIdQuery,
   useGetAllEnrolledStudentsQuery,
-} = coursesApi;
-export default coursesApi;
+} = teacherApi;
+export default teacherApi;
