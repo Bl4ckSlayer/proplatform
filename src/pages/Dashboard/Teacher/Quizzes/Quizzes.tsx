@@ -162,6 +162,14 @@ const Quizzes = (props: Props) => {
             >
               <h2 className="text-lg font-semibold mb-2">{quiz.title}</h2>
               <p>Batch: {quiz.batch}</p>
+              <div>
+                <button className="btn btn-sm border-none text-black bg-green-300">
+                  Edit
+                </button>
+                <button className="btn ml-4 btn-sm border-none text-black bg-red-300">
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

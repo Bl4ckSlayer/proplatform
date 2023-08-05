@@ -6,7 +6,7 @@ type Props = {};
 const Overview = (props: Props) => {
   // Mock data for the charts
   const totalStudentsData = {
-    series: [56, 43, 32, 65],
+    series: [{ data: [56, 43, 32, 65] }],
     options: {
       chart: {
         type: "bar",
@@ -24,7 +24,7 @@ const Overview = (props: Props) => {
   };
 
   const totalAssignmentsData = {
-    series: [30, 25, 28, 33],
+    series: [{ data: [30, 25, 28, 33] }],
     options: {
       chart: {
         type: "bar",
@@ -42,7 +42,7 @@ const Overview = (props: Props) => {
   };
 
   const totalQuizzesData = {
-    series: [20, 15, 18, 23],
+    series: [{ data: [20, 15, 18, 23] }],
     options: {
       chart: {
         type: "bar",
@@ -87,7 +87,12 @@ const Overview = (props: Props) => {
   };
 
   const totalWatchedTimeData = {
-    series: [120, 90, 110, 80],
+    series: [
+      {
+        name: "Total Watched Time",
+        data: [120, 90, 110, 80],
+      },
+    ],
     options: {
       chart: {
         type: "bar",
@@ -106,7 +111,7 @@ const Overview = (props: Props) => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-semibold mb-4">Teacher Dashboard</h1>
-      <div className=" gap-6 grid grid-cols-2 ">
+      <div className=" gap-32 grid grid-cols-2 ">
         <div className="bg-white p-4 shadow rounded-lg">
           <h2 className="text-lg font-semibold mb-2">Total Students</h2>
           <div className="h-48">

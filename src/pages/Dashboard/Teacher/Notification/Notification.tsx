@@ -68,20 +68,6 @@ const Notification = (props: Props) => {
     <div>
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-semibold mb-4">Teacher Notifications</h1>
-
-        <div className="grid gap-4">
-          {notifications.map((notification) => (
-            <div
-              key={notification.id}
-              className="bg-white p-4 shadow rounded-lg hover:bg-blue-100 transition duration-300"
-            >
-              <h2 className="text-lg font-semibold mb-2">
-                {notification.title}
-              </h2>
-              <p>{notification.content}</p>
-            </div>
-          ))}
-        </div>
       </div>
       <NotificationModal></NotificationModal>
       <div className="title flex items-center justify-between py-1 my-1">
@@ -107,6 +93,25 @@ const Notification = (props: Props) => {
                   Link
                 </a>
               </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="grid gap-4 grid-cols-2">
+        {notifications.map((notification) => (
+          <div
+            key={notification.id}
+            className="bg-white p-4 shadow rounded-lg hover:bg-blue-100 transition duration-300"
+          >
+            <h2 className="text-lg font-semibold mb-2">{notification.title}</h2>
+            <p>{notification.content}</p>
+            <div>
+              <button className="btn btn-sm border-none text-black bg-green-300">
+                Edit
+              </button>
+              <button className="btn ml-4 btn-sm border-none text-black bg-red-300">
+                Delete
+              </button>
             </div>
           </div>
         ))}
