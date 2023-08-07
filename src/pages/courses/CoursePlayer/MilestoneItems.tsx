@@ -11,16 +11,17 @@ import { useGetModuleByMilestoneQuery } from "../../../features/coursesSlice/stu
 type Props = {
   item: any;
   setOpenTab: any;
+  openTab:any;
 };
 
-const MilestoneItems = ({ item, setOpenTab }: Props) => {
+const MilestoneItems = ({ item, setOpenTab,openTab }: Props) => {
   const { data: module } = useGetModuleByMilestoneQuery(item._id);
   console.log(module);
 
   // console.log(item)
   return (
     <Accordion
-      className="border-white border-2 rounded-2xl"
+      className="border-white border rounded-2xl"
       transition={{
         duration: "300ms",
         timingFunction: "cubic-bezier(0, 0, 0.2, 1)",
@@ -29,7 +30,7 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
       <AccordionItem key={item._id}>
         {({ open }: any) => (
           <>
-            <AccordionHeader className="w-full flex justify-between items-center border-b-2   p-4">
+            <AccordionHeader className="w-full flex justify-between items-center border-b  rounded-2xl  p-4">
               <span>{item.name}</span>
               <svg
                 className={`w-6 h-6 ${!open ? "" : "rotate-90"}`}
@@ -47,7 +48,7 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
 
             <AccordionBody>
               {module?.data?.map((ite: any) => (
-                <ModuleItems item={ite} key={ite._id} setOpenTab={setOpenTab} />
+                <ModuleItems openTab={openTab} item={ite} key={ite._id} setOpenTab={setOpenTab} />
               ))}
             </AccordionBody>
           </>

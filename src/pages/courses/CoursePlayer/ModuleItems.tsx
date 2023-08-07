@@ -14,21 +14,22 @@ import { useGetVideosByModuleQuery } from "../../../features/coursesSlice/studen
 type Props = {
   item: any;
   setOpenTab: any;
+  openTab:any;
 };
 
-const ModuleItems = ({ item, setOpenTab }: Props) => {
+const ModuleItems = ({ item, setOpenTab,openTab }: Props) => {
   const { data } = useGetVideosByModuleQuery(item._id);
   console.log(data);
   const [active, inActive] = useState(false);
   return (
-    <Accordion className="accordion-body border-2 m-4 rounded-2xl   ">
+    <Accordion className="accordion-body bg-gray-400 m-4 border  ">
       <ul role="tablist">
         <AccordionItem key={item._id}>
           {({ open }: any) => (
             <>
               <AccordionHeader
                 className={`w-full flex justify-between items-center  border-b p-4 ${
-                  !open ? "bg-grey" : "bg-gray-800 text-white rounded-2xl"
+                  !open ? "bg-grey" : "bg-gray-600 text-white"
                 }`}
               >
                 <span>{item.name}</span>
@@ -56,7 +57,7 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                     }}
                     data-toggle="tab"
                     role="tablist"
-                    className="bg-white rounded-2xl border-b-2"
+                    className="border-b p-2  text-white"
                   >
                     <div
                       className={`w-full flex flex-row gap-2 cursor-pointer   p-2 `}
@@ -67,7 +68,7 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="w-6 h-6 text-black"
+                        className="w-6 h-6 "
                       >
                         <path
                           strokeLinecap="round"
@@ -88,7 +89,7 @@ const ModuleItems = ({ item, setOpenTab }: Props) => {
                         className="flex flex-col w-full"
                       >
                         <a href="#">
-                          <p className="text-black text-sm font-medium">
+                          <p className=" text-sm font-medium">
                             {i.name}
                           </p>
                         </a>

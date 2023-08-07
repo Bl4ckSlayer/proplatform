@@ -12,6 +12,7 @@ import { useGetEnrolledCoursesForStudentQuery } from "../../features/coursesSlic
 import ComponentLoader from "../../components/ComponentLoader";
 import CourseCard from "../../components/Teacher/Courses/CourseCard";
 import NoDataFound from "../../components/ui/NoDataFound";
+import { useNavigate } from "react-router";
 
 const filtersData = [
   {
@@ -92,6 +93,7 @@ const Courses = (Props: any) => {
     error,
   } = useGetEnrolledCoursesForStudentQuery({});
   console.log(courses);
+  const navigate = useNavigate();
   return (
     <>
       <div>
@@ -111,9 +113,64 @@ const Courses = (Props: any) => {
           ) : (
             <>
               {courses?.data?.length > 0 ? (
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-2  gap-3 ">
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-3 ">
                   {courses?.data?.map((item: any) => (
-                    <CourseCard key={item?._id} item={item} />
+                    // <CourseCard  item={item} />
+                    <div key={item?._id}
+      className=" bg-slate-50 cursor-pointer rounded border"
+      onClick={() => navigate(`${item?._id}`)}
+    >
+      <div className=" p-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center flex-col">
+            <div className="mb-3 w-full">
+              <img
+                src={item?.image}
+                alt=""
+                className="w-full h-56 object-cover rounded"
+              />
+            </div>
+            {/*  <div className="w-12 h-12 rounded-full bg-gray-200"></div> */}
+            <div className="ml-4">
+              <div className="text-lg font-medium text-gray-700">
+                {item?.courseName}
+              </div>
+              <div>
+                <p className="text-xs text-gray-500">
+                  {item?.description?.slice(0, 120)}
+                </p>
+              </div>
+              <div className="text-sm font-medium text-gray-500 flex items-center gap-2 my-2  mt-3">
+                <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Milestones:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.milestones?.length}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Modules:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.modules?.length}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Videos:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.videos?.length}
+                  </span>
+                </div>
+                {/* <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Enrolled Students:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.students?.length}
+                  </span>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
                   ))}
                 </div>
               ) : (

@@ -88,6 +88,7 @@ const CoursePlayer = (props: Props) => {
                   item={item}
                   key={item?._id}
                   setOpenTab={setOpenTab}
+                  openTab={openTab}
                 />
               ))}
             </div>
