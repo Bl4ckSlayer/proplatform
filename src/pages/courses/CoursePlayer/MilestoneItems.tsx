@@ -6,24 +6,32 @@ import {
   AccordionItem,
 } from "react-headless-accordion";
 import ModuleItems from "./ModuleItems";
+import { useGetModuleByMilestoneQuery } from "../../../features/coursesSlice/studentApi";
+
 type Props = {
   item: any;
   setOpenTab: any;
+  openTab:any;
 };
 
-const MilestoneItems = ({ item, setOpenTab }: Props) => {
+const MilestoneItems = ({ item, setOpenTab,openTab }: Props) => {
+  const { data: module } = useGetModuleByMilestoneQuery(item._id);
+  console.log(module);
+
+  // console.log(item)
   return (
     <Accordion
+      className="border-white border rounded-2xl"
       transition={{
         duration: "300ms",
         timingFunction: "cubic-bezier(0, 0, 0.2, 1)",
       }}
     >
-      <AccordionItem>
+      <AccordionItem key={item._id}>
         {({ open }: any) => (
           <>
-            <AccordionHeader className="w-full flex justify-between items-center   p-4">
-              <span>{item.milestone}</span>
+            <AccordionHeader className="w-full flex justify-between items-center border-b  rounded-2xl  p-4">
+              <span>{item.name}</span>
               <svg
                 className={`w-6 h-6 ${!open ? "" : "rotate-90"}`}
                 fill="currentColor"
@@ -39,7 +47,9 @@ const MilestoneItems = ({ item, setOpenTab }: Props) => {
             </AccordionHeader>
 
             <AccordionBody>
-              <ModuleItems item={item} setOpenTab={setOpenTab} />
+              {module?.data?.map((ite: any) => (
+                <ModuleItems openTab={openTab} item={ite} key={ite._id} setOpenTab={setOpenTab} />
+              ))}
             </AccordionBody>
           </>
         )}

@@ -5,10 +5,10 @@ type Props = {};
 
 const StudentAnalytics = (props: Props) => {
   const options = {
-    labels: ["Javascript", "c#", "Beginner Python", "CSS", "Html"],
+    labels: ["Javascript", "c++", "C"],
   };
-  const series = [44, 55, 41, 17, 15];
-  const labels = ["A", "B", "C", "D", "E"];
+  const series = [44, 55, 41];
+  const labels = ["A", "B", "C"];
 
   // area chart
   const series2 = [
@@ -63,7 +63,7 @@ const StudentAnalytics = (props: Props) => {
     <div>
       <div className="title flex items-center justify-between my-2 bg-slate-50 p-2 rounded">
         <h3 className="text-lg">
-          <span className="text-primary">Ashik's</span> Course Analytics
+          <span className="text-primary">Student 1</span> Course Analytics
         </h3>
         <select name="" className="select select-bordered" id="">
           <option value="">Select Course</option>

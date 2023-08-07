@@ -20,11 +20,11 @@ const StudentDashboardMenu = [
     path: "/student/dashboard",
     icon: <AiFillDashboard />,
   },
-  {
-    title: "Enrolled Courses",
-    path: "enrolled-courses",
-    icon: <BiChalkboard />,
-  },
+  // {
+  //   title: "Enrolled Courses",
+  //   path: "enrolled-courses",
+  //   icon: <BiChalkboard />,
+  // },
 
   {
     title: "Notifications",
@@ -37,11 +37,11 @@ const StudentDashboardMenu = [
 
     icon: <CgProfile />,
   },
-  {
-    title: "Settings",
-    path: "settings",
-    icon: <FaCogs />,
-  },
+  // {
+  //   title: "Settings",
+  //   path: "settings",
+  //   icon: <FaCogs />,
+  // },
 ];
 
 // teacher dashboard menu
@@ -62,8 +62,8 @@ const TeacherDashboardMenu = [
     icon: <IoIosPeople />,
   },
   {
-    title: "Assignments",
-    path: "assignments",
+    title: "Notification",
+    path: "notification",
     icon: <GiNewspaper />,
   },
   {
@@ -72,11 +72,11 @@ const TeacherDashboardMenu = [
     icon: <MdOutlineQuiz />,
   },
 
-  {
-    title: "Messages",
-    path: "messages",
-    icon: <BiMessageRoundedDots />,
-  },
+  // {
+  //   title: "Messages",
+  //   path: "messages",
+  //   icon: <BiMessageRoundedDots />,
+  // },
 
   {
     title: "Profile",
@@ -84,11 +84,11 @@ const TeacherDashboardMenu = [
 
     icon: <CgProfile />,
   },
-  {
-    title: "Settings",
-    path: "settings",
-    icon: <FaCogs />,
-  },
+  // {
+  //   title: "Settings",
+  //   path: "settings",
+  //   icon: <FaCogs />,
+  // },
 ];
 
 const DashboardMenus = (props: Props) => {
@@ -105,11 +105,11 @@ const DashboardMenus = (props: Props) => {
   const location = useLocation();
 
   return (
-    <ul className="menu p-4 w-72  text-base-200 bg-[#5375e2]">
+    <ul className="menu p-2 w-80  text-base-200 bg-[#5375e2]">
       {/*  Sidebar content here  */}
-      <li className="p-4 ">
+      <li className="p-2">
         <Link className="text-4xl font-bold font-montserrat" to={"/"}>
-          Coursera
+          ProPlatform
         </Link>
       </li>
       {menus.map((item, index) => {

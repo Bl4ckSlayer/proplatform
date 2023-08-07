@@ -22,6 +22,7 @@ import TeacherGuard from "../guard/TeacherGuard";
 import StudentGuard from "../guard/StudentGuard";
 import StudentDetails from "../components/Student/StudentDetails/StudentDetails";
 import TeacherOverview from "../pages/Dashboard/Teacher/Overview/Overview";
+import Notification from "../pages/Dashboard/Teacher/Notification/Notification";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +30,20 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "courses",
-    element: <Courses />,
+    path: "course",
+    element: (
+      <AuthGuard>
+        <Courses />
+      </AuthGuard>
+    ),
   },
   {
-    path: "course/player/:courseId",
-    element: <CoursePlayer />,
+    path: "course/:courseId",
+    element: (
+      <AuthGuard>
+        <CoursePlayer />
+      </AuthGuard>
+    ),
   },
   {
     path: "login",
@@ -96,8 +105,8 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "settings",
-        element: <Settings />,
+        path: "notification",
+        element: <Notification />,
       },
     ],
   },

@@ -11,7 +11,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@szhsin/react-accordion": "^1.2.0",
-    "apexcharts": "^3.40.0",
+    "apexcharts": "^3.41.1",
     "axios": "^1.4.0",
     "daisyui": "^2.51.4",
     "react": "^18.2.0",
@@ -27,7 +27,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "react-tabs": "^6.0.1",
-    "universal-cookie": "^4.0.4"
+    "universal-cookie": "^4.0.4",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

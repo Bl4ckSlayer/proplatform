@@ -8,6 +8,11 @@ import {
 } from "react-headless-accordion";
 import { BiChevronDown, BiCross, BiPlus, BiX } from "react-icons/bi";
 import { set, useForm } from "react-hook-form";
+import { useGetEnrolledCoursesForStudentQuery } from "../../features/coursesSlice/courseApi";
+import ComponentLoader from "../../components/ComponentLoader";
+import CourseCard from "../../components/Teacher/Courses/CourseCard";
+import NoDataFound from "../../components/ui/NoDataFound";
+import { useNavigate } from "react-router";
 
 const filtersData = [
   {
@@ -81,10 +86,101 @@ const Courses = (Props: any) => {
   const onSubmit = (data: any) => {
     console.log(data);
   };
-
+  const {
+    data: courses,
+    isLoading,
+    isError,
+    error,
+  } = useGetEnrolledCoursesForStudentQuery({});
+  console.log(courses);
+  const navigate = useNavigate();
   return (
     <>
-      <div className="p-5 container mx-auto">
+      <div>
+        <div className=" bg-[#7594fc] ">
+          {" "}
+          <Navbar />
+        </div>
+
+        <div className="title flex items-center justify-center py-1 my-1">
+          <h1>All Courses</h1>
+        </div>
+        <div className="">
+          {isLoading ? (
+            <ComponentLoader />
+          ) : isError ? (
+            <div>Something went wrong Sir.</div>
+          ) : (
+            <>
+              {courses?.data?.length > 0 ? (
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-3 ">
+                  {courses?.data?.map((item: any) => (
+                    // <CourseCard  item={item} />
+                    <div key={item?._id}
+      className=" bg-slate-50 cursor-pointer rounded border"
+      onClick={() => navigate(`${item?._id}`)}
+    >
+      <div className=" p-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center flex-col">
+            <div className="mb-3 w-full">
+              <img
+                src={item?.image}
+                alt=""
+                className="w-full h-56 object-cover rounded"
+              />
+            </div>
+            {/*  <div className="w-12 h-12 rounded-full bg-gray-200"></div> */}
+            <div className="ml-4">
+              <div className="text-lg font-medium text-gray-700">
+                {item?.courseName}
+              </div>
+              <div>
+                <p className="text-xs text-gray-500">
+                  {item?.description?.slice(0, 120)}
+                </p>
+              </div>
+              <div className="text-sm font-medium text-gray-500 flex items-center gap-2 my-2  mt-3">
+                <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Milestones:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.milestones?.length}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Modules:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.modules?.length}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Videos:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.videos?.length}
+                  </span>
+                </div>
+                {/* <div className="flex flex-col gap-1 bg-white p-2 px-4 rounded">
+                  Enrolled Students:{" "}
+                  <span className="badge badge-ghost">
+                    {item?.students?.length}
+                  </span>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+                  ))}
+                </div>
+              ) : (
+                <NoDataFound title={"No Courses Found."} />
+              )}
+            </>
+          )}
+        </div>
+      </div>
+      {/* <div className="p-5 container mx-auto">
         <div className="flex items-center gap-2 justify-between">
           <h1 className="text-2xl font-bold">Filters</h1>
           <div className="dropdown dropdown-end">
@@ -104,7 +200,7 @@ const Courses = (Props: any) => {
           </div>
         </div>
         {/* show the filters area */}
-        <div className="flex items-center justify-between my-3">
+      {/* <div className="flex items-center justify-between my-3">
           <div className="flex items-center gap-3">
             <ul className="flex gap-1 items-center flex-wrap">
               {filters.map((item) => (
@@ -214,7 +310,7 @@ const Courses = (Props: any) => {
             </li>
           )}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

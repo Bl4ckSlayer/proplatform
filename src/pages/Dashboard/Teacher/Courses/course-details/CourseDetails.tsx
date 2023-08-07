@@ -6,13 +6,16 @@ import AddModuleModal from "./modals/AddModuleModal";
 import AddVideoModal from "./modals/AddVideoModal";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  useDeleteCourseMutation,
+ 
   useGetCourseByTeacherQuery,
 } from "../../../../../features/coursesSlice/courseApi";
 import ScreenLoader from "../../../../../components/ScreenLoader";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import EnrolledStudents from "./EnrolledStudents/EnrolledStudents";
 import AddAssignmentModal from "./modals/AddAssignmentModal";
+import AddCourseModal from "../AddCourseModal";
+import UpdateCourseModal from "../UpdateCourseModal";
+import { useDeleteCourseMutation } from "../../../../../features/coursesSlice/teacherApi";
 
 const CourseDetails = () => {
   const navigate = useNavigate();
@@ -25,9 +28,10 @@ const CourseDetails = () => {
     isError,
     error,
   } = useGetCourseByTeacherQuery<any>(courseId);
-
+console.log(course)
   const [DeleteCourse, { isLoading: deleteLoading, isSuccess }] =
     useDeleteCourseMutation();
+
 
   // delete course
   const deleteCourse = async () => {
@@ -39,6 +43,8 @@ const CourseDetails = () => {
       await DeleteCourse(courseId);
     }
   };
+ 
+  
 
   // handle error
   useEffect(() => {
@@ -51,6 +57,7 @@ const CourseDetails = () => {
   if (isError) return <>{error?.message}</>;
   return (
     <div>
+            <UpdateCourseModal course={course?.course} key={course?._id} />
       {/* add module modal */}
       <AddModuleModal course={course?.course} key={course?._id} />
       {/* add video modal */}
@@ -105,15 +112,14 @@ const CourseDetails = () => {
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
+                
                 <li>
-                  <a href="" className="p-1 px-3">
-                    Muted
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="p-1 px-3">
+                <label htmlFor="add-course-modal" className="p-1 px-3">
+           Edit
+          </label>
+                  {/* <a href="" className="p-1 px-3"  onClick={() => updateCourse()}>
                     Edit
-                  </a>
+                  </a> */}
                 </li>
                 <li>
                   <a

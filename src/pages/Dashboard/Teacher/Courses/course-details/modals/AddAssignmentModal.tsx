@@ -175,7 +175,7 @@ const AddAssignmentModal = ({ course }: Props) => {
 
             <div className="form-control mt-3">
               <button className="btn btn-primary" disabled={isLoading}>
-                {isLoading ? "loading..." : "Add Video"}
+                {isLoading ? "loading..." : "Add Assignment"}
               </button>
             </div>
           </div>

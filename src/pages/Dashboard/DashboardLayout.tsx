@@ -62,11 +62,11 @@ const DashboardLayout = (props: Props) => {
   return (
     <main>
       {/* dashboard menus */}
-      <div className="drawer drawer-mobile ">
+      <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content p-1">
+        <div className="drawer-content p-1 bg-slate-200">
           {/* page header */}
-          <div className="flex flex-row items-center justify-between bg-slate-100 px-6 p-2 rounded sticky top-1 z-30">
+          <div className="flex flex-row items-center justify-between bg-[#7594fc] px-6 p-2 rounded sticky top-1 z-30 text-white">
             <div>
               <label
                 htmlFor="my-drawer-2"
@@ -76,7 +76,7 @@ const DashboardLayout = (props: Props) => {
               </label>
               <span className="text-2xl">
                 <Link to="/" className="flex items-center gap-2">
-                  <span className="text-[#5375e2] capitalize font-bold flex items-center gap-1">
+                  <span className="capitalize font-bold flex items-center gap-1 text-white ">
                     {role === "student" ? <FaUserGraduate /> : <GiTeacher />}
                     {role}
                   </span>{" "}
@@ -104,7 +104,7 @@ const DashboardLayout = (props: Props) => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-black"
                 >
                   <li>
                     <Link to={profileLink} className="justify-between">
@@ -119,7 +119,7 @@ const DashboardLayout = (props: Props) => {
             </div>
           </div>
           {/* Page content here  */}
-          <div className="main-content p-4">
+          <div className="main-content p-4 bg-slate-200">
             <Outlet />
           </div>
         </div>

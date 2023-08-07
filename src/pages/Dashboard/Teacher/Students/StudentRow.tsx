@@ -51,18 +51,7 @@ const StudentRow = ({ student, ind }: Props) => {
           >
             <BsEye />
           </Link>
-          <button
-            data-tip="Send Message"
-            className="btn btn-info btn-sm btn-circle tooltip grid place-items-center tooltip-primary pointer-events-none opacity-40"
-          >
-            <BsSend />
-          </button>
-          <button
-            data-tip="Certificate"
-            className="btn btn-success btn-sm btn-circle tooltip grid place-items-center tooltip-primary pointer-events-none opacity-40"
-          >
-            <BsCreditCard />
-          </button>
+        
         </div>
       </td>
     </tr>

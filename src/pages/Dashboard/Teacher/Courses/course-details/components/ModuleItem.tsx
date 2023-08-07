@@ -11,6 +11,7 @@ type Props = {
 const ModuleList = ({ item, ind }: Props) => {
   // get videos by module
   const { data: videos } = useGetVideosByModuleQuery(item?._id);
+  
   return (
     <div
       tabIndex={0}

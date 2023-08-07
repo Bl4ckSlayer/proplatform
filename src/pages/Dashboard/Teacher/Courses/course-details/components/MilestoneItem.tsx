@@ -8,12 +8,14 @@ type Props = {
 };
 
 const MilestoneItem = ({ milestone, serial }: Props) => {
-  // get module api hook
+
+  
   const { data: modules } = useGetModuleByMilestoneQuery(milestone?._id);
+  // console.log(milestone,serial)
   return (
     <div
       tabIndex={serial}
-      className="collapse collapse-plus border border-base-300 bg-base-100 "
+      className="collapse collapse-plus border-2 border-base-500 bg-gray-200  "
     >
       <input type="checkbox" className="peer" />
       <div className="collapse-title text-md font-medium  bg-slate-50 flex flex-col items-start gap-1">
